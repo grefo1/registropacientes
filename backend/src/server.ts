@@ -1,12 +1,15 @@
 import "dotenv/config";
 import express, { json, Request, Response } from "express";
 import pacientes from "./routes/pacientes.routers";
-
+import cors from "cors";
 
 const app = express();
 const port: number = 3000;
 
 app.use(express.json());
+app.use(cors({
+  origin: "http://localhost:5174",
+}));
 
 app.use("/", pacientes);
 
