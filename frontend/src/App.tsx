@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import BotonAgregarPaciente from "./components/Boton";
 
+
+/* 
 type Paciente = {
   id: number;
   nombre: string;
@@ -8,7 +12,7 @@ type Paciente = {
   domicilio: string;
   usCoop: number;
 };
-
+ 
 function App() {
   const [pacientes, setPacientes] = useState<Paciente[]>([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +26,7 @@ function App() {
       });
   }, []);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <p>Cargaaaaando...</p>;
 
   return (
     <div className="container">
@@ -31,8 +35,8 @@ function App() {
       <div className="grid">
         {pacientes.map(p => (
           <div className="card" key={p.id}>
-            <h3>{p.nombre} {p.apellido}</h3>
-            <p>Domicilio: {p.domicilio}</p>
+            <h3>{p.nombre.toUpperCase()} {p.apellido.toUpperCase()}</h3>
+            <p>Domicilio: {p.domicilio.toUpperCase()}</p>
             <p>UsCoop: {p.usCoop}</p>
           </div>
         ))}
@@ -44,3 +48,18 @@ function App() {
 
 export default App;
 
+*/
+
+function App() {
+  return (
+    <>
+      <Navbar />
+
+      
+      <BotonAgregarPaciente text="NuevoaPaciente" />
+      
+    </>
+  );
+}
+
+export default App;
