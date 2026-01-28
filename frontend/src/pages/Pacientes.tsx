@@ -18,9 +18,10 @@ function Pacientes() {
   }, []);
 
   const handleBorrar = async (id: number) => {
-    await borrarPaciente(id);
-
-    setPacientes(pacientes.filter((p) => p.id !== id));
+    if (window.confirm("¿Seguro que querés borrar?")) {
+      await borrarPaciente(id);
+      setPacientes((prev) => prev.filter((p) => p.id !== id));
+    }
   };
 
   return (
