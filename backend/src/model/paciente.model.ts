@@ -37,3 +37,10 @@ export const ingresarPacienteModel = async (data: {
     usCoop,
   };
 };
+
+export const borrarPaciente = async (id: number) => {
+  await pool.query(
+    "DELETE FROM usuarios WHERE id = ?",
+    [id]
+  )
+}

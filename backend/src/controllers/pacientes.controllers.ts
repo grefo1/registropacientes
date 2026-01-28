@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { findAll, findPaciente, ingresarPacienteModel } from "../model/paciente.model";
+import { findAll, findPaciente, ingresarPacienteModel, borrarPaciente } from "../model/paciente.model";
 
 export const getPacientes = async (req: Request, res: Response) => {
   try {
@@ -47,4 +47,21 @@ export const ingresarPaciente = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ error: "Error al crear paciente" });
   }
+}
+
+export const borrarPacienteId = async (req: Request, res: Response) => {
+  const id: number = Number(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "ID inválido" });
+  }
+
+  try {
+    await borrarPaciente(id);
+    res.status(200).json("Paciente borrado");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "error al borrar paciente" })
+  }
+
 }
