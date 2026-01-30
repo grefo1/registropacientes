@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import lupa from "../assets/lupa.png";
 
-function Navbar({ cambiarVista }) {
+function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <nav className="bg-blue-600 text-white px-6 py-3 shadow-md">
       <div className="flex items-center justify-between">
@@ -10,21 +13,21 @@ function Navbar({ cambiarVista }) {
         {/* Links */}
         <div className="flex gap-6">
           <button
-            onClick={() => cambiarVista("pacientes")}
+            onClick={() => navigate("/pacientes")}
             className="font-semibold hover:text-gray-200 transition"
           >
             Pacientes
           </button>
 
           <button
-            onClick={() => cambiarVista("agregar")}
+            onClick={() => navigate("/agregar")}
             className="font-semibold hover:text-gray-200 transition"
           >
             Agregar
           </button>
 
           <button
-            onClick={() => cambiarVista("ordenes")}
+            onClick={() => navigate("/ordenes")}
             className="font-semibold hover:text-gray-200 transition"
           >
             Órdenes

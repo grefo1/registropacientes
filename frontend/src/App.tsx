@@ -1,19 +1,22 @@
-import { useState } from "react";
-import Navbar from "./components/Navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Pacientes from "./pages/Pacientes";
-import Agregar from "./pages/Agregar";
+import Login from "./pages/Login";
+import AgregarPaciente from "./pages/Agregar";
+import Register from "./pages/Register";
 
 function App() {
-  const [vista, setVista] = useState("pacientes");
-
   return (
     <>
-      <Navbar cambiarVista={setVista} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/pacientes" element={<Pacientes />} />
+          <Route path="/agregar" element={<AgregarPaciente />} />
 
-      {vista === "pacientes" && <Pacientes />}
-      {vista === "agregar" && <Agregar />}
-
-      <div className="p-6"></div>
+          <Route path="*" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

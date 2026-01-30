@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { agregarPaciente } from "../services/agregarPacientes";
+import Navbar from "../components/Navbar";
 
 function AgregarPaciente() {
   const [nombre, setNombre] = useState("");
@@ -8,7 +9,7 @@ function AgregarPaciente() {
   const [usCoop, setUsCoop] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    //e.preventDefault();
 
     console.log({
       nombre,
@@ -21,50 +22,54 @@ function AgregarPaciente() {
   };
 
   return (
-    <div className="flex justify-center items-start mt-10">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg space-y-4"
-      >
-        <input
-          required
-          placeholder="Nombre"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          className="w-full border p-2 rounded"
-        />
+    <div>
+      <Navbar />
 
-        <input
-          required
-          placeholder="Apellido"
-          value={apellido}
-          onChange={(e) => setApellido(e.target.value)}
-          className="w-full border p-2 rounded"
-        />
-
-        <input
-          required
-          placeholder="Domicilio"
-          value={domicilio}
-          onChange={(e) => setDomicilio(e.target.value)}
-          className="w-full border p-2 rounded"
-        />
-
-        <input
-          required
-          placeholder="UsCoop"
-          value={usCoop}
-          onChange={(e) => setUsCoop(e.target.value)}
-          className="w-full border p-2 rounded"
-        />
-
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+      <div className="flex justify-center items-start mt-10">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg space-y-4"
         >
-          Guardar
-        </button>
-      </form>
+          <input
+            required
+            placeholder="Nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            className="w-full border p-2 rounded"
+          />
+
+          <input
+            required
+            placeholder="Apellido"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+            className="w-full border p-2 rounded"
+          />
+
+          <input
+            required
+            placeholder="Domicilio"
+            value={domicilio}
+            onChange={(e) => setDomicilio(e.target.value)}
+            className="w-full border p-2 rounded"
+          />
+
+          <input
+            required
+            placeholder="UsCoop"
+            value={usCoop}
+            onChange={(e) => setUsCoop(e.target.value)}
+            className="w-full border p-2 rounded"
+          />
+
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Guardar
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
