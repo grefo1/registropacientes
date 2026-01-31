@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getPacientes } from "../services/traerPacientes";
-import { borrarPaciente } from "../services/borrarPaciente";
+import { getPacientes } from "../services/pacientesControllers";
+import { borrarPaciente } from "../services/pacientesControllers";
 import Navbar from "../components/Navbar";
 
 function Pacientes() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { agregarPaciente } from "../services/agregarPacientes";
+import { agregarPaciente } from "../services/pacientesControllers";
 import Navbar from "../components/Navbar";
 
 function AgregarPaciente() {

@@ -1,7 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import comprobarUsuario from "../services/loginAuth";
 
 function Login() {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    comprobarUsuario(email, contraseña);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -10,12 +20,12 @@ function Login() {
           Iniciar sesión
         </h1>
 
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">
-              Usuario o email
-            </label>
+            <label className="block text-sm font-medium mb-1">Email</label>
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="text"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -24,6 +34,8 @@ function Login() {
           <div>
             <label className="block text-sm font-medium mb-1">Contraseña</label>
             <input
+              value={contraseña}
+              onChange={(e) => setContraseña(e.target.value)}
               type="password"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
