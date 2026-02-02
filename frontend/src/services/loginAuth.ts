@@ -1,7 +1,7 @@
 async function comprobarUsuario(pEmail: string, pContraseña: string) {
   await fetch("http://localhost:3000/login", {
     method: "POST",
-    headers: { "Content-Type": "aplication/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       email: pEmail,
       contraseña: pContraseña,
