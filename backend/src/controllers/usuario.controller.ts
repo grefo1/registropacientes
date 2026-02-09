@@ -1,6 +1,7 @@
 import { Response, Request } from "express";
 import bcrypt from "bcrypt";
 import { crearUsuario, traerContraseña } from "../model/usuarios.model";
+import jwt from "jsonwebtoken"
 
 export async function registroAuth(req: Request, res: Response) {
   const { email, contraseña } = req.body;
@@ -31,8 +32,14 @@ export async function loginAuth(req: Request, res: Response) {
       return res.status(401).json({ error: "Contraseña incorrecta" });
     }
 
-    res.json({ ok: true });
-    console.log(ok);
+    const token = jwt.sign(
+      {
+        email: email,
+      }, process.env.JWT_SECRET!, { expiresIn: "1h" }
+
+    );
+
+    res.json({ token });
   } catch (error) {
     res.status(500).json({ error: "Error en el login" });
   }
