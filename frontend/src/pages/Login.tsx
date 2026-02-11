@@ -7,10 +7,13 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    comprobarUsuario(email, contraseña);
+    const data = await comprobarUsuario(email, contraseña);
+    if (data) {
+      navigate("/pacientes");
+    }
   };
 
   return (
