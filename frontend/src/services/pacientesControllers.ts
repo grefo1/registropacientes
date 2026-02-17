@@ -31,7 +31,15 @@ export async function borrarPaciente(id: number) {
 
 export async function getPacientes() {
   try {
-    const res = await fetch("http://localhost:3000/pacientes");
+    const token = localStorage.getItem("token");
+
+    const res = await fetch("http://localhost:3000/pacientes",{
+      method : "GET",
+      headers :{
+        "Authorization": `^Bearer ${token}`,
+        "Content-type": "application/json"
+      }
+    });
 
     if (!res.ok) {
       throw new Error("Error en la respuesta del servidor.");
